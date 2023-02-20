@@ -48,7 +48,8 @@ async def main(client, message):
     krakenxurl = krakenapi["data"]["url"]
     krakentoken = krakenapi["data"]["serverAccessToken"]
     krakenupload = requests.post(krakenxurl,  params={"file": open(file, "rb"), "serverAccessToken":krakentoken}).json()
-    krakenlink = krakenupload["data"]["url"]
+    krakenlinkz = krakenupload["data"]["hash"]
+    krakenkink = f"https://krakenfiles.com/view/{krakenlinkz}/file.html"
     await status.delete()
     os.remove(file)
     File_Button = InlineKeyboardMarkup(
