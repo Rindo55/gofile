@@ -48,15 +48,12 @@ async def main(client, message):
     upload = requests.post(url=f"https://{server}.gofile.io/uploadFile",files={"upload_file": open(file, "rb")}).json()
     link = upload["data"]["downloadPage"]
     name = upload["data"]["fileName"]
-    directlink = upload["data"]["directLink"]
 
     await status.delete()
     os.remove(file)
     File_Button = InlineKeyboardMarkup(
             [[
-            InlineKeyboardButton('📥 Direct Download Link',url=directlink),
-            InlineKeyboardButton('📜 Download Page', url=link),
-            InlineKeyboardButton('🎁 Share Link', url="https://t.me/share/url?url="+directlink)
+            InlineKeyboardButton('📜 Download Page', url=link)
             ]]
         )
 
@@ -78,12 +75,6 @@ async def main(client, message):
  {link}
 
 ◇───────────────◇
-
-**📥Direct Dᴏᴡɴʟᴏᴀᴅ Lɪɴᴋ:** 
-
-◇───────────────◇
-
-{directlink}
 
 ◇───────────────◇
 
