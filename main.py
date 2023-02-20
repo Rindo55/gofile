@@ -49,7 +49,7 @@ async def main(client, message):
     krakentoken = krakenapi['data']['serverAccessToken']
     xfile = open(file, "rb")
     PARAMS = {'serverAccessToken':krakentoken}
-    krakenupload = requests.post(url = krakenxurl,  files = xfile, params = PARAMS).json()
+    krakenupload = requests.post(url = krakenxurl,  files = file, params = PARAMS).json()
     krakenlinkz = krakenupload['data']['hash']
     krakenkink = f"https://krakenfiles.com/view/{krakenlinkz}/file.html"
     await status.delete()
