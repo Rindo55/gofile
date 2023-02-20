@@ -44,27 +44,22 @@ async def main(client, message):
     status = await message.reply("𝑫𝒐𝒘𝒏𝒍𝒐𝒂𝒅𝒊𝒏𝒈 𝒀𝒐𝒖𝒓 𝑭𝒊𝒍𝒆 𝑻𝒐 𝑴𝒚 𝑺𝒆𝒓𝒗𝒆𝒓...")
     now = time.time()
     file =await OC_GoFiles_Files.download_media(message,progress=progress,progress_args=("**𝚄𝚙𝚕𝚘𝚊𝚍 𝙿𝚛𝚘𝚐𝚛𝚎𝚜𝚜 𝚂𝚝𝚊𝚛𝚝𝚎𝚍, 𝙿𝚕𝚎𝚊𝚜𝚎 𝚆𝚊𝚒𝚝 !**\n**𝕀ᴛ𝕤 𝕋ᴀᴋᴇ ᴛɪᴍᴇ 𝔸ᴄᴄᴏʀᴅɪɴɢ 𝕐ᴏᴜʀ 𝔽ɪʟᴇ𝕤 𝕊ɪᴢᴇ** \n\n**ᴇᴛᴀ:** ", status,now))
-    server = requests.get(url="https://api.gofile.io/getServer").json()["data"]["server"]
-    upload = requests.post(url=f"https://{server}.gofile.io/uploadFile",files={"upload_file": open(file, "rb")}).json()
-    link = upload["data"]["downloadPage"]
-    name = upload["data"]["fileName"]
-
+    krakenapi = requests.get(url="https://krakenfiles.com/api/server/available").json()
+    krakenxurl = krakenapi["data"]["url"]
+    krakentoken = krakenapi["data"]["serverAccessToken"]
+    krakenupload = requests.post(url=krakenxurlurl, files={"upload_file": open(fukpath, "rb")}, serverAccessToken=krakentoken).json()
+    krakenlink = krakenupload["data"]["url"]
     await status.delete()
     os.remove(file)
     File_Button = InlineKeyboardMarkup(
             [[
-            InlineKeyboardButton('📜 Download Page', url=link)
+            InlineKeyboardButton('📜 Download Page', url=krakenlink)
             ]]
         )
 
     output = f"""
 <u>**🔅🎁🎁 ƑƖԼЄ ƲƤԼƠƛƊЄƊ ƬƠ ƓƠƑƖԼЄ 🎁🎁**</u>
 
-**📂 Fɪʟᴇ Nᴀᴍᴇ:**
-
-◇───────────────◇
-
- `{name}`
 
 ◇───────────────◇
 
@@ -72,7 +67,7 @@ async def main(client, message):
 
 ◇───────────────◇
 
- {link}
+ {krakenlink}
 
 ◇───────────────◇
 
