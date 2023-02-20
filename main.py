@@ -53,11 +53,6 @@ async def main(client, message):
     krakenkink = f"https://krakenfiles.com/view/{krakenlinkz}/file.html"
     await status.delete()
     os.remove(file)
-    File_Button = InlineKeyboardMarkup(
-            [[
-            InlineKeyboardButton('📜 Download Page', url=krakenlink)
-            ]]
-        )
 
     output = f"""
 <u>**🔅🎁🎁 ƑƖԼЄ ƲƤԼƠƛƊЄƊ ƬƠ ƓƠƑƖԼЄ 🎁🎁**</u>
@@ -78,7 +73,7 @@ async def main(client, message):
 
 🌷 𝒟𝑒𝓋𝑒𝓁𝑜𝓅𝑒𝓇 : ✍️✍️𝓞𝓹𝓮𝓷 𝓒𝓸𝓭𝓮 𝓓𝓮𝓿𝓼 ✍️✍️"""
 
-    await message.reply(output,reply_markup=File_Button, disable_web_page_preview=True)
+    await message.reply(output, disable_web_page_preview=True)
 
 
 
