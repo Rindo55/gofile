@@ -65,7 +65,10 @@ async def main(client, message):
 **📦 Download Page:**
 
 ◇───────────────◇
-
+ {krakenxurl}
+ 
+ {krakentoken}
+ 
  {krakenlink}
 
 ◇───────────────◇
