@@ -50,7 +50,8 @@ async def main(client, message):
     PARAMS = {'serverAccessToken': krakentoken}
     headers = {'X-AUTH-TOKEN': 'YjdiNDVjNWVjODUwNDE1YTvA3SwQLNGO0Yw0wo6YyaBPk4CcXFVEg3KFozUxaBaJ'}
     files = {'file': open(file, 'rb')}
-    krakenupload = requests.post(krakenxurl, files=files, headers=headers, params={'serverAccessToken': krakentoken}).json()
+    krakenupload = requests.post(krakenxurl, files=files, headers=headers, params={'serverAccessToken': krakentoken})
+    kraze = krakenupload.json()
     krakenlink = krakenupload.text
     await status.delete()
     os.remove(file)
