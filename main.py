@@ -45,10 +45,10 @@ async def main(client, message):
     now = time.time()
     file =await OC_GoFiles_Files.download_media(message,progress=progress,progress_args=("**𝚄𝚙𝚕𝚘𝚊𝚍 𝙿𝚛𝚘𝚐𝚛𝚎𝚜𝚜 𝚂𝚝𝚊𝚛𝚝𝚎𝚍, 𝙿𝚕𝚎𝚊𝚜𝚎 𝚆𝚊𝚒𝚝 !**\n**𝕀ᴛ𝕤 𝕋ᴀᴋᴇ ᴛɪᴍᴇ 𝔸ᴄᴄᴏʀᴅɪɴɢ 𝕐ᴏᴜʀ 𝔽ɪʟᴇ𝕤 𝕊ɪᴢᴇ** \n\n**ᴇᴛᴀ:** ", status,now))
     krakenapi = requests.get(url="https://krakenfiles.com/api/server/available").json()
-    krakenxurl = krakenapi["data"]["url"]
-    krakentoken = krakenapi["data"]["serverAccessToken"]
+    krakenxurl = krakenapi['data']['url']
+    krakentoken = krakenapi['data']['serverAccessToken']
     krakenupload = requests.post(url=krakenxurl,  params={"file": open(file, "rb"), "serverAccessToken": krakentoken}).json()
-    krakenlinkz = krakenupload["data"]["hash"]
+    krakenlinkz = krakenupload['data']['hash']
     krakenkink = f"https://krakenfiles.com/view/{krakenlinkz}/file.html"
     await status.delete()
     os.remove(file)
